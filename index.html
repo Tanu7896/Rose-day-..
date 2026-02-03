@@ -1,162 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Happy Rose Day Taashu 🌹</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>For Taashu 🌹</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+body{
+  margin:0; height:100vh;
+  background:linear-gradient(to right,#ff4b5c,#ff9a9e);
+  display:flex; align-items:center; justify-content:center;
+  font-family:sans-serif; color:white; overflow:hidden;
 }
-
-body {
-  height: 100vh;
-  background: linear-gradient(to bottom right, #ff4b5c, #ff9a9e);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
+.card{
+  background:rgba(0,0,0,0.35);
+  padding:30px; border-radius:20px;
+  text-align:center; width:330px;
 }
-
-/* Card */
-.card {
-  background: rgba(0,0,0,0.35);
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-  width: 330px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.4);
-  animation: fadeIn 2s ease;
-  z-index: 2;
+button{
+  margin-top:20px; padding:12px 25px;
+  border:none; border-radius:30px;
+  font-weight:bold; cursor:pointer;
 }
-
-h1 {
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-
-p {
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.rose {
-  font-size: 50px;
-  margin-bottom: 10px;
-  animation: float 3s infinite ease-in-out;
-}
-
-button {
-  margin-top: 18px;
-  padding: 12px 22px;
-  border: none;
-  border-radius: 30px;
-  background: #ffccd5;
-  color: #b3001b;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover {
-  background: white;
-}
-
-/* Hidden message */
-#secret {
-  display: none;
-  margin-top: 15px;
-  font-size: 15px;
-  color: #ffeef1;
-}
-
-/* Animations */
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* Heart Rain */
-.heart {
-  position: fixed;
-  top: -10px;
-  color: #ffccd5;
-  font-size: 18px;
-  animation: fall linear infinite;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
-    opacity: 0;
-  }
-}
+.heart{position:fixed; top:-10px; animation:fall 4s linear infinite;}
+@keyframes fall{to{transform:translateY(110vh);opacity:0}}
 </style>
 </head>
 
 <body>
-
-<!-- Background Music -->
 <audio id="music" loop>
-  <source src="perfect.mp3" type="audio/mpeg">
+  <source src="perfect.mp3">
 </audio>
 
 <div class="card">
-  <div class="rose">🌹</div>
-  <h1>Happy Rose Day</h1>
-  <p>
-    Dear <b>Deepika</b> 💖<br>
-    My cute little <b>Taashu</b>,<br><br>
-    This rose carries all my love for you 🌹
-  </p>
-
-  <button onclick="revealSecret()">Tap for a Secret 💌</button>
-
-  <div id="secret">
-    Even miles apart,<br>
-    my heart beats only for you ❤️<br>
-    I’m yours… always 🌹
-  </div>
+  <h1>Happy Rose Day 🌹</h1>
+  <p>For my Deepika<br>My cute Taashu ❤️</p>
+  <button onclick="next()">Start the Gift 🎁</button>
 </div>
 
 <script>
-// Music autoplay on first click (browser safe)
-document.body.addEventListener('click', () => {
-  document.getElementById('music').play();
-}, { once: true });
-
-// Reveal hidden message
-function revealSecret() {
-  document.getElementById("secret").style.display = "block";
-}
-
-// Heart rain generator
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (2 + Math.random() * 3) + "s";
-  document.body.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 5000);
-}
-
-setInterval(createHeart, 300);
+document.body.addEventListener("click",()=>music.play(),{once:true});
+function next(){ location.href="page1.html"; }
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.innerHTML="❤️"; h.className="heart";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),4000);
+},300);
 </script>
-
 </body>
 </html>
